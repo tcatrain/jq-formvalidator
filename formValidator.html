@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!-- HTML5 Hello world by kirupa - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>FormValidator</title>
+        
+        <!-- SCRIPTS -->
+        <script src="js/lib/jquery-1.11.0.min.js" type="text/javascript"></script>
+        <script src="js/jq-formvalidator.js" type="text/javascript"></script>
+    </head>
+    <!-- /HEAD -->
+    <!-- BODY -->
+    <body>
+        <form action="action" method="method" id="form1">
+            input1 : <input type="text" name="input1" format="^[A-Z]+$" min-length="1" max-length="11" value="value1" /><br />
+            input2 : <input type="text" name="input2" format="^[0-9]+$" min-length="2" max-length="22" value="value2" /><br />
+            input3 : <input type="text" name="input3" format="^[A-Za-z0-9]+$" min-length="3" max-length="33" value="value3" /><br />
+            <input type="submit" name="submit1" value="submit1" />
+        </form>
+        <script type="text/javascript">
+            $(document).on('ready', function() {
+                $('#form1').formValidator();
+            });
+        </script>
+    </body>
+</html>
