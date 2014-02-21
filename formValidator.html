@@ -13,9 +13,9 @@
     <!-- BODY -->
     <body>
         <form action="action" method="method" id="form1">
-            input1 : <input type="text" name="input1" format="^[A-Z]+$" min-length="1" max-length="11" value="value1" /><br />
-            input2 : <input type="text" name="input2" format="^[0-9]+$" min-length="2" max-length="22" value="value2" /><br />
-            input3 : <input type="text" name="input3" format="^[A-Za-z0-9]+$" min-length="3" max-length="33" value="value3" /><br />
+            input1 : <input type="text" name="input1" jqfmv-validators="expr,length" jqfmv-against-length="1," jqfmv-against-expr="^[A-Z]+$" /><br />
+            input2 : <input type="text" name="input2" jqfmv-validators="expr,length" jqfmv-against-length=",22" jqfmv-against-expr="^[0-9]+$" /><br />
+            input3 : <input type="text" name="input3" jqfmv-validators="expr,length" jqfmv-against-length="3,33" jqfmv-against-expr="^[A-Za-z0-9]+$" /><br />
             <input type="submit" name="submit1" value="submit1" />
         </form>
         <script type="text/javascript">
