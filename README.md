@@ -54,7 +54,7 @@ form validation item :
 
 ```javascript
 $('theFormItem').formValidator({
-    'onValidationSuccess' : yourSuccessHandler
+    'onValidationSuccess' : yourSuccessHandler,
     'onValidationError'   : yourErrorHandler
 });
 ```
@@ -140,7 +140,7 @@ hanlders.
 
 ```javascript
 $('theFormItem').formValidator({
-    'yourOption1' : true
+    'yourOption1' : true,
     'yourOption2' : 'valueOption2'
 });
 ```
