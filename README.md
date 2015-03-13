@@ -23,11 +23,11 @@ The module will take care of everything else.
 ### Events
 Currently, the library can validate the form upon various triggers :
 
-+ **validateOnBlur** boolean *trigger validation upon blur event on input*
-+ **validateOnSubmit** boolean *trigger validation upon submit event on form*
-+ **validateOnKeyUp** boolean *trigger validation upon keyUp event on input*
++ **validateOnBlur**    boolean *trigger validation upon blur event on input*
++ **validateOnSubmit**  boolean *trigger validation upon submit event on form*
++ **validateOnKeyUp**   boolean *trigger validation upon keyUp event on input*
 + **validateOnKeyDown** boolean *trigger validation upon keyDown event on input*
-+ **validateOnFocus** boolean *trigger validation upon focus event on input*
++ **validateOnFocus**   boolean *trigger validation upon focus event on input*
 
 These triggers are static for the time being, I may enhance more dynamic possibilities.
 
@@ -40,10 +40,10 @@ You can overright these handler just by settings customizable options when defin
 form validation item :
 
 ```
-> $('theFormItem').formValidator({
->   onValidationSuccess : yourHandlerHere
->   onValidationError : yourHandlerHere
-> });
+$('theFormItem').formValidator({
+    onValidationSuccess : yourSuccessHandler
+    onValidationError   : yourErrorHandler
+});
 ```
 
 The engine will pass 3 parameters to your error handler :
