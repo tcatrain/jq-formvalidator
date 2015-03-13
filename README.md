@@ -61,7 +61,7 @@ The engine will pass 2 parameters to your success handler :
 A set of validator is already implemented as core handlers. Here is the list :
 
 | Name       | Validation                       | Against attribut syntax       |
-| ---------- | -------------------------------- | ----------------------------- |
+|:----------:| -------------------------------- | ----------------------------- |
 | length     | Value has a valid length         | min,max                       |
 | mandatory  | Value is set                     | none                          | 
 | expr       | Value matches regular expression | regex                         |
@@ -73,12 +73,3 @@ A set of validator is already implemented as core handlers. Here is the list :
 | consistency| Value match a given input value  | #itemId or itemName           |
 | format     | Values matches a given format    | email or number or integer... |
 
-+ **mandatory**    *Checks the valuation of an input. No against attribute.*
-+ **expr**         *Checks the matching of a value against an expression. Against syntax : regex*
-+ **email**        *Checks the matching of a value against an email syntax. No against attribute.*
-+ **number**       *Checks the matching of a value against a number syntax. No against attribute.*
-+ **integer**      *Checks the matching of a value against an integer syntax. No against attribute.*
-+ **phone**        *Checks the matching of a value against an phone number syntax. No against attribute.*
-+ **checklist**    *Checks the matching of a value in a list of item. Against syntax : item1,item2,item3.*
-+ **consistency**  *Checks the matching of a value against another field. Against value : #fieldId or fieldName*
-+ **format**       *Checks the matching of a value against a given format. Against syntax : email or phone or number...*
