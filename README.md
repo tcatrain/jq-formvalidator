@@ -48,12 +48,12 @@ $('theFormItem').formValidator({
 
 The engine will pass 3 parameters to your error handler :
 
-+ **input** string *the checked input*
-+ **errors** array *the error list upon validation*
++ **input**    string *the checked input*
++ **errors**   array  *the error list upon validation*
 + **settings** object *the settings object defined on form validation item creation*
 
 The engine will pass 2 parameters to your success handler :
 
-+ **input** string *the checked input*
++ **input**    string *the checked input*
 + **settings** object *the settings object defined on form validation item creation*
 
