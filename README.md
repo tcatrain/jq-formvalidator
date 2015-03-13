@@ -69,8 +69,10 @@ The engine will pass 3 parameters to your error handler :
 
 The engine will pass 2 parameters to your success handler :
 
-+ **input**    string *The checked input*
-+ **settings** object *The settings object defined on form validation item creation*
+| Parameter | Type   | Description                                                  |
+| --------- | ------ | ------------------------------------------------------------ |
+| input     | string | The checked input                                            |
+| settings  | object | The settings object defined on form validation item creation |
 
 ### Existing validators
 A set of validator is already implemented as core handlers. Here is the list :
