@@ -61,7 +61,7 @@ The engine will pass 2 parameters to your success handler :
 A set of validator is already implemented as core handlers. Here is the list :
 
 | Name       | Validation                       | Against attribut syntax       |
-|:----------:| -------------------------------- | ----------------------------- |
+| ---------- | -------------------------------- | ----------------------------- |
 | length     | Value has a valid length         | min,max                       |
 | mandatory  | Value is set                     | none                          | 
 | expr       | Value matches regular expression | regex                         |
