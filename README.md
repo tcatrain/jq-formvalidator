@@ -144,3 +144,14 @@ $('theFormItem').formValidator({
     'yourOption2' : 'valueOption2'
 });
 ```
+
+## Upcoming features
+Currently, the plugin just handle input text/password field. Next focus will be to enhance select/radio/checkbox
+and textarea fields.
+Then, some reset and default values for the fields could be usefull for those who don't want to use placeholders.
+Finally, handling further submission action, to allow ajax calls after validation.
+
+Keep in mind the project is always ongoing. Feel free to use it as you want, just send me your feedback. I'll 
+consider any suggestion.
+
+## Enjoy !
