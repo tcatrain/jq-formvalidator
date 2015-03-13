@@ -73,3 +73,9 @@ A set of validator is already implemented as core handlers. Here is the list :
 | consistency| Value match a given input value  | #itemId or itemName           |
 | format     | Values matches a given format    | email or number or integer... |
 
+To use a validator, just add the attributes on the input field :
+
+```html
+<!-- This input will be validate against length validator, which should be at list 1 -->
+<input type="text" name="inputLength" jqfmv-validators="length" jqfmv-against-length="1," />
+```
