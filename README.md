@@ -12,15 +12,15 @@
 # JQuery Form Validator
 
 
-## Introduction
+## Introduction <a id="#introduction"></a>
 This is the first version of a form validation plugin for JQuery.
 The JQuery plugin will help you with validating your forms, with just some
 simple markup. Then create your form validation item, and that's it !
 The module will take care of everything else.
 
-## Usage
+## Usage <a id="#usage"></a>
 
-### Events
+### Events <a id="#events"></a>
 Currently, the library can validate the form upon various triggers. You can set them 
 at formValidator initialization.
 
@@ -44,7 +44,7 @@ $('theFormItem').formValidator({
 
 These triggers are static for the time being, I may enhance more dynamic possibilities.
 
-### Success and error
+### Success and error <a id="#successAndError"></a>
 The library allows to overright the default handlers for validation success and error.
 The default handler is very basic, and just change the background from default to green
 on success and from default to red on error.
@@ -74,7 +74,7 @@ The engine will pass 2 parameters to your success handler :
 | input     | string | The checked input                                            |
 | settings  | object | The settings object defined on form validation item creation |
 
-### Existing validators
+### Built-in validators <a id="#builtIntValidators"></a>
 A set of validator is already implemented as core handlers. Here is the list :
 
 | Name       | Validation                       | Against attribut syntax       |
@@ -108,7 +108,7 @@ against attribute as required.
 <input type="text" name="inputLengthFormat" jqfmv-validators="length,format" jqfmv-against-length="10,15" jqfmv-against-format="number" />
 ```
 
-### Extending the core
+### Extending the core <a id="#extendingTheCore"></a>
 If you need some special validation, you can extend the core validators by adding your own.
 Just add a new validator, with a name and a handler.
 
@@ -133,7 +133,27 @@ Then you can use it the same way you use built-in validators.
 <input type="text" name="inputStaticMandatory" jqfmv-validators="static,mandatory" jqfmv-against-static="test" />
 ```
 
-### Extending the settings
+### Built-in settings <a id="#builtInSettings"></a>
+A bunch of built-in settings are available with default values. Based on these values, the core determine some actions
+and validations to do. Here is the list of built-in settings :
+
+| Name                       | Type     | Default value             | Description                                 |
+| -------------------------- | -------- | ------------------------- | ------------------------------------------- |
+| validateOnBlur             | boolean  | true                      | cf. [Events](#events)                       |
+| validateOnSubmit           | boolean  | true                      | cf. [Events](#events)                       |
+| validateOnKeyUp            | boolean  | false                     | cf. [Events](#events)                       |
+| validateOnKeyDown          | boolean  | false                     | cf. [Events](#events)                       |
+| validateOnFocus            | boolean  | false                     | cf. [Events](#events)                       |
+| trimValues                 | boolean  | true                      | Trim the values before check                |
+| replaceWithTrimedValues    | boolean  | true                      | Replace the values in the input after trim  |
+| keepValueIfWrong           | boolean  | true                      | Keep the value in place if validation error |
+| onValidationSuccess        | function | $.fn._onValidationSuccess | cf. [Success and error](#successAndError)   |
+| onValidationError          | function | $.fn._onValidationError   | cf. [Success and error](#successAndError)   |
+| afterFormValidationSuccess | function | null                      | cf. [Success and error](#successAndError)   |
+| afterFormValidationError   | function | null                      | cf. [Success and error](#successAndError)   |
+
+
+### Extending the settings <a id="#extendingTheSettings"></a>
 Should you ever need to add a new option in the settings, you can define it directly on formValidator definition.
 Just add your property to the given object, it will be transmitted to your custom validators and success / error
 hanlders.
@@ -145,13 +165,12 @@ $('theFormItem').formValidator({
 });
 ```
 
-## Upcoming features
+## Upcoming features <a id="#upcomingFeatures"></a>
 Currently, the plugin just handle input text/password field. Next focus will be to enhance select/radio/checkbox
 and textarea fields.
 Then, some reset and default values for the fields could be usefull for those who don't want to use placeholders.
-Finally, handling further submission action, to allow ajax calls after validation.
 
 Keep in mind the project is always ongoing. Feel free to use it as you want, just send me your feedback. I'll 
 consider any suggestion.
 
-## Enjoy !
+## Enjoy ! <a id="#enjoy"></a>
