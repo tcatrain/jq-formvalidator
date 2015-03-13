@@ -39,10 +39,12 @@ on success and from default to red on error.
 You can overright these handler just by settings customizable options when defining your
 form validation item :
 
+```
 > $('theFormItem').formValidator({
 >   onValidationSuccess : yourHandlerHere
 >   onValidationError : yourHandlerHere
 > });
+```
 
 The engine will pass 3 parameters to your error handler :
 
