@@ -32,6 +32,16 @@ at formValidator initialization.
 | validateOnKeyDown | boolean | Trigger validation upon keyDown event on input |
 | validateOnFocus   | boolean | Trigger validation upon focus event on input   |
 
+```javascript
+$('theFormItem').formValidator({
+    'validateOnBlur'    : true,
+    'validateOnSubmit'  : true,
+    'validateOnKeyUp'   : false,
+    'validateOnKeyDown' : false,
+    'validateOnFocus'   : false
+});
+```
+
 These triggers are static for the time being, I may enhance more dynamic possibilities.
 
 ### Success and error
@@ -44,8 +54,8 @@ form validation item :
 
 ```javascript
 $('theFormItem').formValidator({
-    onValidationSuccess : yourSuccessHandler
-    onValidationError   : yourErrorHandler
+    'onValidationSuccess' : yourSuccessHandler
+    'onValidationError'   : yourErrorHandler
 });
 ```
 
