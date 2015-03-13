@@ -22,10 +22,15 @@ The module will take care of everything else.
 
 ### Events
 Currently, the library can validate the form upon various triggers :
+
 1. validateOnBlur boolean ::trigger validation upon blur event on input
+
 2. validateOnSubmit boolean ::trigger validation upon submit event on form
+
 3. validateOnKeyUp boolean ::trigger validation upon keyUp event on input
+
 4. validateOnKeyDown boolean ::trigger validation upon keyDown event on input
+
 5. validateOnFocus boolean ::trigger validation upon focus event on input
 
 These triggers are static for the time being, I may enhance more dynamic possibilities.
