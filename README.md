@@ -73,9 +73,21 @@ A set of validator is already implemented as core handlers. Here is the list :
 | consistency| Value match a given input value  | #itemId or itemName           |
 | format     | Values matches a given format    | email or number or integer... |
 
-To use a validator, just add the attributes on the input field :
+To use a validator, just add the attribute jqfmv-validators on the input field. You can add multiple validators
+on one single input, just separate them with comas.
+Some validators doesn't require against attribute (see the table above). When needed, just add 
+and attribute to the input with the following syntax : jqfmv-against-*validatorName*.
+If you specify more than one validator requiring an against attribute, no problems, just add as many
+against attribute as required.
 
 ```html
-<!-- This input will be validate against length validator, which should be at list 1 -->
+<!-- This input will be validate against length validator, which should be at list 1. -->
 <input type="text" name="inputLength" jqfmv-validators="length" jqfmv-against-length="1," />
+<!-- This input will be validate against number validator.-->
+<input type="text" name="inputNumber" jqfmv-validators="number" />
+<!-- This input will be validate against mandatory and integer validator.-->
+<input type="text" name="inputIntegerMandatory" jqfmv-validators="integer,mandatory" />
+<!-- This input will be validate against length and format validator.-->
+<input type="text" name="inputLengthFormat" jqfmv-validators="length,format" jqfmv-against-length="10,15" jqfmv-against-format="number" />
 ```
+
