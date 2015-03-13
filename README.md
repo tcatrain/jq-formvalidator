@@ -139,18 +139,18 @@ and validations to do. Here is the list of built-in settings :
 
 | Name                       | Type     | Default value             | Description                                 |
 | -------------------------- | -------- | ------------------------- | ------------------------------------------- |
-| validateOnBlur             | boolean  | true                      | cf. [Events](#events-)                       |
-| validateOnSubmit           | boolean  | true                      | cf. [Events](#events-)                       |
-| validateOnKeyUp            | boolean  | false                     | cf. [Events](#events-)                       |
-| validateOnKeyDown          | boolean  | false                     | cf. [Events](#events-)                       |
-| validateOnFocus            | boolean  | false                     | cf. [Events](#events-)                       |
+| validateOnBlur             | boolean  | true                      | cf. [Events](#events)                       |
+| validateOnSubmit           | boolean  | true                      | cf. [Events](#events)                       |
+| validateOnKeyUp            | boolean  | false                     | cf. [Events](#events)                       |
+| validateOnKeyDown          | boolean  | false                     | cf. [Events](#events)                       |
+| validateOnFocus            | boolean  | false                     | cf. [Events](#events)                       |
 | trimValues                 | boolean  | true                      | Trim the values before check                |
 | replaceWithTrimedValues    | boolean  | true                      | Replace the values in the input after trim  |
 | keepValueIfWrong           | boolean  | true                      | Keep the value in place if validation error |
-| onValidationSuccess        | function | $.fn._onValidationSuccess | cf. [Success and error](#success-and-error-)   |
-| onValidationError          | function | $.fn._onValidationError   | cf. [Success and error](#success-and-error-)   |
-| afterFormValidationSuccess | function | null                      | cf. [Success and error](#success-and-error-)   |
-| afterFormValidationError   | function | null                      | cf. [Success and error](#success-and-error-)   |
+| onValidationSuccess        | function | $.fn._onValidationSuccess | cf. [Success and error](#success-and-error)   |
+| onValidationError          | function | $.fn._onValidationError   | cf. [Success and error](#success-and-error)   |
+| afterFormValidationSuccess | function | null                      | cf. [Success and error](#success-and-error)   |
+| afterFormValidationError   | function | null                      | cf. [Success and error](#success-and-error)   |
 
 
 ### Extending the settings
