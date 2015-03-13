@@ -21,13 +21,16 @@ The module will take care of everything else.
 ## Usage
 
 ### Events
-Currently, the library can validate the form upon various triggers :
+Currently, the library can validate the form upon various triggers. You can set them 
+at formValidator initialization.
 
-+ **validateOnBlur**    boolean *Trigger validation upon blur event on input*
-+ **validateOnSubmit**  boolean *Trigger validation upon submit event on form*
-+ **validateOnKeyUp**   boolean *Trigger validation upon keyUp event on input*
-+ **validateOnKeyDown** boolean *Trigger validation upon keyDown event on input*
-+ **validateOnFocus**   boolean *Trigger validation upon focus event on input*
+| Option            | Type    | Description                                    |
+| ----------------- | ------- | ---------------------------------------------- |
+| validateOnBlur    | boolean | Trigger validation upon blur event on input    |
+| validateOnSubmit  | boolean | Trigger validation upon submit event on form   |
+| validateOnKeyUp   | boolean | Trigger validation upon keyUp event on input   |
+| validateOnKeyDown | boolean | Trigger validation upon keyDown event on input |
+| validateOnFocus   | boolean | Trigger validation upon focus event on input   |
 
 These triggers are static for the time being, I may enhance more dynamic possibilities.
 
@@ -48,9 +51,11 @@ $('theFormItem').formValidator({
 
 The engine will pass 3 parameters to your error handler :
 
-+ **input**    string *The checked input*
-+ **errors**   array  *The error list upon validation*
-+ **settings** object *The settings object defined on form validation item creation*
+| Parameter | Type   | Description                                                  |
+| --------- | ------ | ------------------------------------------------------------ |
+| input     | string | The checked input                                            |
+| errors    | array  | The error list upon validation                               |
+| settings  | object | The settings object defined on form validation item creation |
 
 The engine will pass 2 parameters to your success handler :
 
