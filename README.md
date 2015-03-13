@@ -98,13 +98,49 @@ If you specify more than one validator requiring an against attribute, no proble
 against attribute as required.
 
 ```html
-<!-- This input will be validate against length validator, which should be at list 1. -->
+<!-- This input will be validated against length validator, which should be at list 1. -->
 <input type="text" name="inputLength" jqfmv-validators="length" jqfmv-against-length="1," />
-<!-- This input will be validate against number validator.-->
+<!-- This input will be validated against number validator.-->
 <input type="text" name="inputNumber" jqfmv-validators="number" />
-<!-- This input will be validate against mandatory and integer validator.-->
+<!-- This input will be validated against mandatory and integer validator.-->
 <input type="text" name="inputIntegerMandatory" jqfmv-validators="integer,mandatory" />
-<!-- This input will be validate against length and format validator.-->
+<!-- This input will be validated against length and format validator.-->
 <input type="text" name="inputLengthFormat" jqfmv-validators="length,format" jqfmv-against-length="10,15" jqfmv-against-format="number" />
 ```
 
+### Extending the core
+If you need some special validation, you can extend the core validators by adding your own.
+Just add a new validator, with a name and a handler.
+
+```javascript
+// Testing custom extension
+function staticValidator(value, against, settings) {
+    var err = [];
+    
+    if (value !== against) err.push('CUSTOM_ERR_CODE');
+    
+    return err;
+}
+$.jqfmv.validators.add({'name' : 'static', 'handler' : staticValidator});
+```
+
+Then you can use it the same way you use built-in validators.
+
+```html
+<!-- This input will be validated against static validator.-->
+<input type="text" name="inputStatic" jqfmv-validators="static" jqfmv-against-static="test" />
+<!-- This input will be validated against static and mandatory validator.-->
+<input type="text" name="inputStaticMandatory" jqfmv-validators="static,mandatory" jqfmv-against-static="test" />
+```
+
+### Extending the settings
+Should you ever need to add a new option in the settings, you can define it directly on formValidator definition.
+Just add your property to the given object, it will be transmitted to your custom validators and success / error
+hanlders.
+
+```javascript
+$('theFormItem').formValidator({
+    'yourOption1' : true
+    'yourOption2' : 'valueOption2'
+});
+```
