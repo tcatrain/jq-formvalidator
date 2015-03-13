@@ -13,14 +13,37 @@
     <!-- BODY -->
     <body>
         <form action="action" method="method" id="form1">
-            input1 : <input type="text" name="input1" jqfmv-validators="expr,length" jqfmv-against-length="1," jqfmv-against-expr="^[A-Z]+$" /><br />
-            input2 : <input type="text" name="input2" jqfmv-validators="expr,length" jqfmv-against-length=",22" jqfmv-against-expr="^[0-9]+$" /><br />
-            input3 : <input type="text" name="input3" jqfmv-validators="expr,length" jqfmv-against-length="3,33" jqfmv-against-expr="^[A-Za-z0-9]+$" /><br />
+            input-AZ-1, : <input type="text" name="input-AZ-1" jqfmv-validators="expr,length" jqfmv-against-length="1," jqfmv-against-expr="^[A-Z]+$" /><br />
+            input-09-,22 : <input type="text" name="input-09-22" jqfmv-validators="expr,length" jqfmv-against-length=",22" jqfmv-against-expr="^[0-9]+$" /><br />
+            input-AZaz09-3,33 : <input type="text" name="input-AZaz09-333" jqfmv-validators="expr,length" jqfmv-against-length="3,33" jqfmv-against-expr="^[A-Za-z0-9]+$" /><br />
+            input-Email : <input type="text" name="input-email" jqfmv-validators="email" /><br />
+            input-Number : <input type="text" name="input-number" jqfmv-validators="number" /><br />
+            input-Integer : <input type="text" name="input-integer" jqfmv-validators="integer" /><br />
+            input-Phone : <input type="text" name="input-phone" jqfmv-validators="phone" /><br />
+            input-Checklist-apple-pear-banana : <input type="text" name="input-checklist" jqfmv-validators="checklist" jqfmv-against-checklist="apple,pear,banana" /><br />
+            input-Consistent-AZ-10,10 : <input type="text" name="input-consistent-AZ-1010" jqfmv-validators="length" jqfmv-against-length="10,10" /><br />
+            input-Consistency : <input type="text" name="input-consistency" jqfmv-validators="consistency" jqfmv-against-consistency="input-consistent-AZ-1010" /><br />
+            input-Format-Email : <input type="text" name="input-format-email" jqfmv-validators="format" jqfmv-against-format="email" /><br />
+            input-Format-Number : <input type="text" name="input-format-number" jqfmv-validators="format" jqfmv-against-format="number" /><br />
+            input-Format-Integer : <input type="text" name="input-format-integer" jqfmv-validators="format" jqfmv-against-format="integer" /><br />
+            input-Format-Phone : <input type="text" name="input-format-phone" jqfmv-validators="format" jqfmv-against-format="phone" /><br />
+            input-Mandatory : <input type="text" name="input-mandatory" jqfmv-validators="mandatory" /><br />
+            input-Mandatory-Email : <input type="text" name="input-mandatory-email" jqfmv-validators="mandatory,email" /><br />
+            input-Static : <input type="text" name="input-static" jqfmv-validators="static" jqfmv-against-static="test" /><br />
+            
             <input type="submit" name="submit1" value="submit1" />
         </form>
         <script type="text/javascript">
             $(document).on('ready', function() {
-                $('#form1').formValidator();
+                // Testing custom extension
+                function staticValidator(value, against, settings) {
+                    var err = [];
+                    if (settings.staticTest === false) return err;
+                    if (value !== against) err.push('CUSTOM_ERR_CODE');
+                    return err;
+                }
+                $.jqfmv.validators.add({'name' : 'static', 'handler' : staticValidator});
+                $('#form1').formValidator({'keepValueIfWrong' : false, 'staticTest' : true});
             });
         </script>
     </body>
