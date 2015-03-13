@@ -60,7 +60,19 @@ The engine will pass 2 parameters to your success handler :
 ### Existing validators
 A set of validator is already implemented as core handlers. Here is the list :
 
-+ **length**       *Checks the length of a value. Against syntax : min,max.*
+| Name       | Validation                       | Against attribut syntax       |
+| ---------- | -------------------------------- | ----------------------------- |
+| length     | Value has a valid length         | min,max                       |
+| mandatory  | Value is set                     | none                          | 
+| expr       | Value matches regular expression | regex                         |
+| email      | Value is a valid email           | none                          |
+| number     | Value is a valid number          | none                          |
+| integer    | Value is a valid integer         | none                          |
+| phone      | Value is a valid phone number    | none                          |
+| checklist  | Value is in the list             | item1,item2...                |
+| consistency| Value match a given input value  | #itemId or itemName           |
+| format     | Values matches a given format    | email or number or integer... |
+
 + **mandatory**    *Checks the valuation of an input. No against attribute.*
 + **expr**         *Checks the matching of a value against an expression. Against syntax : regex*
 + **email**        *Checks the matching of a value against an email syntax. No against attribute.*
