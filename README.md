@@ -23,11 +23,11 @@ The module will take care of everything else.
 ### Events
 Currently, the library can validate the form upon various triggers :
 
-+ **validateOnBlur**    boolean *trigger validation upon blur event on input*
-+ **validateOnSubmit**  boolean *trigger validation upon submit event on form*
-+ **validateOnKeyUp**   boolean *trigger validation upon keyUp event on input*
-+ **validateOnKeyDown** boolean *trigger validation upon keyDown event on input*
-+ **validateOnFocus**   boolean *trigger validation upon focus event on input*
++ **validateOnBlur**    boolean *Trigger validation upon blur event on input*
++ **validateOnSubmit**  boolean *Trigger validation upon submit event on form*
++ **validateOnKeyUp**   boolean *Trigger validation upon keyUp event on input*
++ **validateOnKeyDown** boolean *Trigger validation upon keyDown event on input*
++ **validateOnFocus**   boolean *Trigger validation upon focus event on input*
 
 These triggers are static for the time being, I may enhance more dynamic possibilities.
 
@@ -48,12 +48,25 @@ $('theFormItem').formValidator({
 
 The engine will pass 3 parameters to your error handler :
 
-+ **input**    string *the checked input*
-+ **errors**   array  *the error list upon validation*
-+ **settings** object *the settings object defined on form validation item creation*
++ **input**    string *The checked input*
++ **errors**   array  *The error list upon validation*
++ **settings** object *The settings object defined on form validation item creation*
 
 The engine will pass 2 parameters to your success handler :
 
-+ **input**    string *the checked input*
-+ **settings** object *the settings object defined on form validation item creation*
++ **input**    string *The checked input*
++ **settings** object *The settings object defined on form validation item creation*
 
+### Existing validators
+A set of validator is already implemented as core handlers. Here is the list :
+
++ **length**       *Checks the length of a value. Against syntax : min,max.*
++ **mandatory**    *Checks the valuation of an input. No against attribute.*
++ **expr**         *Checks the matching of a value against an expression. Against syntax : regex*
++ **email**        *Checks the matching of a value against an email syntax. No against attribute.*
++ **number**       *Checks the matching of a value against a number syntax. No against attribute.*
++ **integer**      *Checks the matching of a value against an integer syntax. No against attribute.*
++ **phone**        *Checks the matching of a value against an phone number syntax. No against attribute.*
++ **checklist**    *Checks the matching of a value in a list of item. Against syntax : item1,item2,item3.*
++ **consistency**  *Checks the matching of a value against another field. Against value : #fieldId or fieldName*
++ **format**       *Checks the matching of a value against a given format. Against syntax : email or phone or number...*
