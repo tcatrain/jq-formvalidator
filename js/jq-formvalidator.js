@@ -42,6 +42,8 @@
      *      keepValueIfWrong boolean ::keep or remove the values on validation error
      *      onValidationSuccess function ::handler triggered on validation success
      *      onValidationError function ::handler triggered on validation error
+     *      afterFormValidationSuccess function ::handler triggered after validation success
+     *      afterFormValidationError function ::handler triggered after validation error
      * Method used to make a form automatically validated on various customizable
      * events.
      **/
@@ -56,7 +58,9 @@
             'replaceWithTrimedValues' : true,
             'keepValueIfWrong' : true,
             'onValidationSuccess' : $(this)._onValidationSuccess,
-            'onValidationError' : $(this)._onValidationError
+            'onValidationError' : $(this)._onValidationError,
+            'afterFormValidationSuccess' : null,
+            'afterFormValidationError' : null
         }, options);
 
         $(this).filter('form').each(function() {
@@ -114,7 +118,6 @@
         console.info(this);
         inputFilter.each(function() {
             var inpt = $(this);
-            var inptValue = inpt.val();
             var inptValidators = inpt.attr('jqfmv-validators').split(',');
 
             err[inpt.attr('name')] = [];
@@ -139,7 +142,6 @@
      * Method used to start listening the customized events
      **/
     $.fn._listen = function(settings) {
-        var formFilter = $(this).filter('form');
         if ($(this).is('form')) {
             var form = $(this);
             if (settings.validateOnBlur) form.on('submit', $.proxy(form._onFormEventTrigger, form, settings));
@@ -163,12 +165,18 @@
     $.fn._onFormEventTrigger = function(settings, evt) {
         evt.preventDefault();
         var err = this.validate(settings);
+        var success = true;
         this.find('input[jqfmv-validators]').each(function() {
-            if (err[$(this).attr('name')].length > 0)
+            if (err[$(this).attr('name')].length > 0) {
                 settings.onValidationError($(this), err[$(this).attr('name')]);
-            else
+                success = false;
+            } else
                 settings.onValidationSuccess($(this));
         });
+        if (success === true && settings.afterFormValidationSuccess !== null)
+            settings.afterFormValidationSuccess(settings);
+        else if (success === false && settings.afterFormValidationError !== null)
+            settings.afterFormValidationError(settings);
     };
 
     /**
@@ -182,9 +190,9 @@
     $.fn._onInputEventTrigger = function(settings, evt) {
         var err = this.validate(settings);
         if (err[this.attr('name')].length)
-            settings.onValidationError(this, err[this.attr('name')]);
+            settings.onValidationError(this, err[this.attr('name')], settings);
         else
-            settings.onValidationSuccess(this);
+            settings.onValidationSuccess(this, settings);
     };
 
     /**
@@ -195,7 +203,7 @@
      * Method used by default when a validation succeeds
      **/
     $.fn._onValidationSuccess = function(input) {
-        input.css('backgroundColor','green');
+        input.css('borderColor','green');
     };
 
     /**
@@ -206,7 +214,7 @@
      * Method used by default when a validation fails
      **/
     $.fn._onValidationError = function(input, errors) {
-        input.css('backgroundColor','red');
+        input.css('borderColor','red');
         console.debug($(input).attr('name') + " : " + errors);
     };
 
