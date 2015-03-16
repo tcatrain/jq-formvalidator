@@ -27,11 +27,11 @@ This is the work in progress version of a form validation plugin for JQuery.
 ### Current work
 Handling validation of various inputs 
 
-| Type   | Status                          |
-| ------ | ------------------------------- |
-|Text    |**<font color="green">OK</font>**|
-|Password|**<font color="green">OK</font>**|
-|Radio   |**<font color="red">KO</font>**  |
-|Checkbox|**<font color="red">KO</font>**  |
-|Textarea|**<font color="red">KO</font>**  |
-|Select  |**<font color="red">KO</font>**  |
+| Type       | Status    |
+| ---------- | --------- |
+|~~Text~~    |~~**OK**~~ |
+|~~Password~~|~~**OK**~~ |
+|Radio       |**KO**     |
+|Checkbox    |**KO**     |
+|Textarea    |**KO**     |
+|Select      |**KO**     |
