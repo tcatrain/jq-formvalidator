@@ -62,7 +62,9 @@
             'replaceWithTrimedValues' : true,
             'keepValueIfWrong' : true,
             'onValidationSuccess' : $(this)._onValidationSuccess,
-            'onValidationError' : $(this)._onValidationError
+            'onValidationError' : $(this)._onValidationError,
+            'afterFormValidationSuccess' : null,
+            'afterFormValidationError' : null
         }, options);
 
         $(this).filter('form').each(function() {
@@ -168,12 +170,18 @@
     $.fn._onFormEventTrigger = function(settings, evt) {
         evt.preventDefault();
         var err = this.validate(settings);
+        var success = true;
         this.find('input[data-jqfmv]').each(function() {
-            if (err[$(this).attr('name')].length > 0)
+            if (err[$(this).attr('name')].length > 0) {
                 settings.onValidationError($(this), err[$(this).attr('name')]);
-            else
+                success = false;
+            } else
                 settings.onValidationSuccess($(this));
         });
+        if (success === true && settings.afterFormValidationSuccess !== null)
+            settings.afterFormValidationSuccess(settings);
+        else if (success === false && settings.afterFormValidationError !== null)
+            settings.afterFormValidationError(settings);
     };
 
     /**
