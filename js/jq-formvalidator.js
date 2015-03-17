@@ -24,6 +24,13 @@
  *          replaceWithTrimedValues
  *          trimValues
  *      Adding settings propagation
+ * @updated 2015-03-16
+ *		Handling radio and checkbox
+
+
+
+
+
  ******************************************************************************/
 
 (function( $ ) {
@@ -65,7 +72,7 @@
 
         $(this).filter('form').each(function() {
             $(this)._listen(settings);
-            $(this).find('input[jqfmv-validators]').each(function() {
+            $(this).find('input[data-jqfmv]').each(function() {
                 $(this)._listen(settings);
             });
         });
@@ -89,14 +96,14 @@
      * @this form ::the form to validate
      * @param settings ::list of customizable settings
      * @return array ::list of errors
-     * Method used to validate each input with a jqfmv-validator attr of a form
+     * Method used to validate each input with a jqfmv data attr of a form
      **/
     $.fn._validateForm = function(settings) {
         var err = [];
         var formFilter = $(this).filter('form');
         if (formFilter.length) {
             $(formFilter).each(function() {
-                $(this).find('input[jqfmv-validators]').each(function() {
+                $(this).find('input[data-jqfmv]').each(function() {
                     err[$(this).attr('name')] = $(this)._validateInput(settings)[$(this).attr('name')];
                 });
             });
@@ -110,14 +117,15 @@
      * @this form ::the input to validate
      * @param settings ::list of customizable settings
      * @return array ::list of errors
-     * Method used to validate an input base on jqfmv-validators attribute
+     * Method used to validate an input base on jqfmv data attribute
      **/
     $.fn._validateInput = function(settings) {
         var err = [];
-        var inputFilter = $(this).filter('input[jqfmv-validators]');
+        var inputFilter = $(this).filter('input[data-jqfmv]');
         inputFilter.each(function() {
             var inpt = $(this);
-            var inptValidators = inpt.attr('jqfmv-validators').split(',');
+
+            var inptValidators = inpt.data('jqfmv').split(',');
 
             err[inpt.attr('name')] = [];
             $(inptValidators).each(function() {
@@ -141,6 +149,7 @@
      * Method used to start listening the customized events
      **/
     $.fn._listen = function(settings) {
+
         if ($(this).is('form')) {
             var form = $(this);
             if (settings.validateOnBlur) form.on('submit', $.proxy(form._onFormEventTrigger, form, settings));
@@ -165,7 +174,7 @@
         evt.preventDefault();
         var err = this.validate(settings);
         var success = true;
-        this.find('input[jqfmv-validators]').each(function() {
+        this.find('input[data-jqfmv]').each(function() {
             if (err[$(this).attr('name')].length > 0) {
                 settings.onValidationError($(this), err[$(this).attr('name')]);
                 success = false;
@@ -257,6 +266,7 @@
              * @param name ::name of the validator
              * @param input ::the target input
              * @param settings ::list of customizable settings
+
              * @return aray ::the list of all errors for the validator
              * Method used to execute the validator defined by name against the given input
              **/
@@ -292,6 +302,8 @@
                         throw "Unsupported field type " + input.type;
                 }
                 return (value);
+
+
             },
 
             /**
@@ -304,7 +316,7 @@
              * Method used to retrieve the appropriate attribute to match against
              **/
             _against : function(name, input) {
-                return (input.attr('jqfmv-against-' + name));
+                return (input.data('jqfmv-' + name));
             },
 
 
