@@ -77,7 +77,7 @@ The engine will pass 2 parameters to your success handler :
 ### Built-in validators
 A set of validator is already implemented as core handlers. Here is the list :
 
-| Name       | Validation                       | Against attribut syntax       |
+| Name       | Validation                       | Against attribute syntax      |
 | ---------- | -------------------------------- | ----------------------------- |
 | length     | Value has a valid length         | min,max                       |
 | mandatory  | Value is set                     | none                          | 
@@ -94,7 +94,7 @@ A set of validator is already implemented as core handlers. Here is the list :
 To use a validator, just add the attribute jqfmv-validators on the input field. You can add multiple validators
 on one single input, just separate them with comas.
 Some validators doesn't require against attribute (see the table above). When needed, just add 
-and attribute to the input with the following syntax : data-jqfmv-against-*validatorName*.
+and attribute to the input with the following syntax : data-jqfmv-*validatorName*.
 If you specify more than one validator requiring an against attribute, no problems, just add as many
 against attribute as required.
 
