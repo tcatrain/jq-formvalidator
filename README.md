@@ -94,19 +94,19 @@ A set of validator is already implemented as core handlers. Here is the list :
 To use a validator, just add the attribute jqfmv-validators on the input field. You can add multiple validators
 on one single input, just separate them with comas.
 Some validators doesn't require against attribute (see the table above). When needed, just add 
-and attribute to the input with the following syntax : jqfmv-against-*validatorName*.
+and attribute to the input with the following syntax : data-jqfmv-against-*validatorName*.
 If you specify more than one validator requiring an against attribute, no problems, just add as many
 against attribute as required.
 
 ```html
 <!-- This input will be validated against length validator, which should be at list 1. -->
-<input type="text" name="inputLength" jqfmv-validators="length" jqfmv-against-length="1," />
+<input type="text" name="inputLength" data-jqfmv="length" data-jqfmv-length="1," />
 <!-- This input will be validated against number validator.-->
-<input type="text" name="inputNumber" jqfmv-validators="number" />
+<input type="text" name="inputNumber" data-jqfmv="number" />
 <!-- This input will be validated against mandatory and integer validator.-->
-<input type="text" name="inputIntegerMandatory" jqfmv-validators="integer,mandatory" />
+<input type="text" name="inputIntegerMandatory" data-jqfmv="integer,mandatory" />
 <!-- This input will be validated against length and format validator.-->
-<input type="text" name="inputLengthFormat" jqfmv-validators="length,format" jqfmv-against-length="10,15" jqfmv-against-format="number" />
+<input type="text" name="inputLengthFormat" data-jqfmv="length,format" data-jqfmv-length="10,15" data-jqfmv-format="number" />
 ```
 
 ### Extending the core
@@ -129,9 +129,9 @@ Then you can use it the same way you use built-in validators.
 
 ```html
 <!-- This input will be validated against static validator.-->
-<input type="text" name="inputStatic" jqfmv-validators="static" jqfmv-against-static="test" />
+<input type="text" name="inputStatic" data-jqfmv="static" data-jqfmv-static="test" />
 <!-- This input will be validated against static and mandatory validator.-->
-<input type="text" name="inputStaticMandatory" jqfmv-validators="static,mandatory" jqfmv-against-static="test" />
+<input type="text" name="inputStaticMandatory" data-jqfmv="static,mandatory" data-jqfmv-static="test" />
 ```
 
 ### Built-in settings

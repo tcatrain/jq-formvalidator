@@ -61,7 +61,7 @@
 
         $(this).filter('form').each(function() {
             $(this)._listen(settings);
-            $(this).find('input[jqfmv-validators]').each(function() {
+            $(this).find('input[data-jqfmv]').each(function() {
                 $(this)._listen(settings);
             });
         });
@@ -85,14 +85,14 @@
      * @this form ::the form to validate
      * @param settings ::list of customizable settings
      * @return array ::list of errors
-     * Method used to validate each input with a jqfmv-validator attr of a form
+     * Method used to validate each input with a jqfmv-validator data attr of a form
      **/
     $.fn._validateForm = function(settings) {
         var err = [];
         var formFilter = $(this).filter('form');
         if (formFilter.length) {
             $(formFilter).each(function() {
-                $(this).find('input[jqfmv-validators]').each(function() {
+                $(this).find('input[data-jqfmv]').each(function() {
                     err[$(this).attr('name')] = $(this)._validateInput(settings)[$(this).attr('name')];
                 });
             });
@@ -106,16 +106,15 @@
      * @this form ::the input to validate
      * @param settings ::list of customizable settings
      * @return array ::list of errors
-     * Method used to validate an input base on jqfmv-validators attribute
+     * Method used to validate an input base on jqfmv data attribute
      **/
     $.fn._validateInput = function(settings) {
         var err = [];
-        var inputFilter = $(this).filter('input[jqfmv-validators]');
-        console.info(this);
+        var inputFilter = $(this).filter('input[data-jqfmv]');
         inputFilter.each(function() {
             var inpt = $(this);
             var inptValue = inpt.val();
-            var inptValidators = inpt.attr('jqfmv-validators').split(',');
+            var inptValidators = inpt.data('jqfmv').split(',');
 
             err[inpt.attr('name')] = [];
             $(inptValidators).each(function() {
@@ -163,7 +162,7 @@
     $.fn._onFormEventTrigger = function(settings, evt) {
         evt.preventDefault();
         var err = this.validate(settings);
-        this.find('input[jqfmv-validators]').each(function() {
+        this.find('input[data-jqfmv]').each(function() {
             if (err[$(this).attr('name')].length > 0)
                 settings.onValidationError($(this), err[$(this).attr('name')]);
             else
@@ -270,7 +269,7 @@
              * Method used to retrieve the appropriate attribute to match against
              **/
             _against : function(name, input) {
-                return (input.attr('jqfmv-against-' + name));
+                return (input.data('jqfmv-' + name));
             },
 
 

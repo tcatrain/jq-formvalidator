@@ -43,24 +43,24 @@
     <body>
         <h1>JQFMV Demo</h1>
         <form action="action" method="method" id="form1">
-            <label>input-AZ-1,</label><input type="text" name="input-AZ-1" jqfmv-validators="expr,length" jqfmv-against-length="1," jqfmv-against-expr="^[A-Z]+$" /><div style="clear:both">&nbsp;</div>
-            <label>input-09-,22</label><input type="text" name="input-09-22" jqfmv-validators="expr,length" jqfmv-against-length=",22" jqfmv-against-expr="^[0-9]+$" /><div style="clear:both">&nbsp;</div>
-            <label>input-AZaz09-3,33</label><input type="text" name="input-AZaz09-333" jqfmv-validators="expr,length" jqfmv-against-length="3,33" jqfmv-against-expr="^[A-Za-z0-9]+$" /><div style="clear:both">&nbsp;</div>
-            <label>input-Alphabetic</label><input type="text" name="input-alphabetic" jqfmv-validators="alphabetic" /><div style="clear:both">&nbsp;</div>
-            <label>input-Number</label><input type="text" name="input-number" jqfmv-validators="number" /><div style="clear:both">&nbsp;</div>
-            <label>input-Integer</label><input type="text" name="input-integer" jqfmv-validators="integer" /><div style="clear:both">&nbsp;</div>
-            <label>input-Phone</label><input type="text" name="input-phone" jqfmv-validators="phone" /><div style="clear:both">&nbsp;</div>
-            <label>input-Checklist-apple-pear-banana</label><input type="text" name="input-checklist" jqfmv-validators="checklist" jqfmv-against-checklist="apple,pear,banana" /><div style="clear:both">&nbsp;</div>
-            <label>input-Consistent-10,10</label><input type="text" name="input-consistent-1010" jqfmv-validators="length" jqfmv-against-length="10,10" /><div style="clear:both">&nbsp;</div>
-            <label>input-Consistency</label><input type="text" name="input-consistency" jqfmv-validators="consistency" jqfmv-against-consistency="input-consistent-1010" /><div style="clear:both">&nbsp;</div>
-            <label>input-Format-Alphabetic</label><input type="text" name="input-format-email" jqfmv-validators="format" jqfmv-against-format="alphabetic" /><div style="clear:both">&nbsp;</div>
-            <label>input-Format-Email</label><input type="text" name="input-format-email" jqfmv-validators="format" jqfmv-against-format="email" /><div style="clear:both">&nbsp;</div>
-            <label>input-Format-Number</label><input type="text" name="input-format-number" jqfmv-validators="format" jqfmv-against-format="number" /><div style="clear:both">&nbsp;</div>
-            <label>input-Format-Integer</label><input type="text" name="input-format-integer" jqfmv-validators="format" jqfmv-against-format="integer" /><div style="clear:both">&nbsp;</div>
-            <label>input-Format-Phone</label><input type="text" name="input-format-phone" jqfmv-validators="format" jqfmv-against-format="phone" /><div style="clear:both">&nbsp;</div>
-            <label>input-Mandatory</label><input type="text" name="input-mandatory" jqfmv-validators="mandatory" /><div style="clear:both">&nbsp;</div>
-            <label>input-Mandatory-Email</label><input type="text" name="input-mandatory-email" jqfmv-validators="mandatory,email" /><div style="clear:both">&nbsp;</div>
-            <label>input-Static</label><input type="text" name="input-static" jqfmv-validators="static" jqfmv-against-static="test" /><div style="clear:both">&nbsp;</div>
+            <label>input-AZ-1,</label><input type="text" name="input-AZ-1"  data-jqfmv="expr,length" data-jqfmv-length="1," data-jqfmv-expr="^[A-Z]+$" /><div style="clear:both">&nbsp;</div>
+            <label>input-09-,22</label><input type="text" name="input-09-22"  data-jqfmv="expr,length" data-jqfmv-length=",22" data-jqfmv-expr="^[0-9]+$" /><div style="clear:both">&nbsp;</div>
+            <label>input-AZaz09-3,33</label><input type="text" name="input-AZaz09-333"  data-jqfmv="expr,length" data-jqfmv-length="3,33" data-jqfmv-expr="^[A-Za-z0-9]+$" /><div style="clear:both">&nbsp;</div>
+            <label>input-Alphabetic</label><input type="text" name="input-alphabetic"  data-jqfmv="alphabetic" /><div style="clear:both">&nbsp;</div>
+            <label>input-Number</label><input type="text" name="input-number"  data-jqfmv="number" /><div style="clear:both">&nbsp;</div>
+            <label>input-Integer</label><input type="text" name="input-integer"  data-jqfmv="integer" /><div style="clear:both">&nbsp;</div>
+            <label>input-Phone</label><input type="text" name="input-phone"  data-jqfmv="phone" /><div style="clear:both">&nbsp;</div>
+            <label>input-Checklist-apple-pear-banana</label><input type="text" name="input-checklist"  data-jqfmv="checklist" data-jqfmv-checklist="apple,pear,banana" /><div style="clear:both">&nbsp;</div>
+            <label>input-Consistent-10,10</label><input type="text" name="input-consistent-1010"  data-jqfmv="length" data-jqfmv-length="10,10" /><div style="clear:both">&nbsp;</div>
+            <label>input-Consistency</label><input type="text" name="input-consistency"  data-jqfmv="consistency" data-jqfmv-consistency="input-consistent-1010" /><div style="clear:both">&nbsp;</div>
+            <label>input-Format-Alphabetic</label><input type="text" name="input-format-email"  data-jqfmv="format" data-jqfmv-format="alphabetic" /><div style="clear:both">&nbsp;</div>
+            <label>input-Format-Email</label><input type="text" name="input-format-email"  data-jqfmv="format" data-jqfmv-format="email" /><div style="clear:both">&nbsp;</div>
+            <label>input-Format-Number</label><input type="text" name="input-format-number"  data-jqfmv="format" data-jqfmv-format="number" /><div style="clear:both">&nbsp;</div>
+            <label>input-Format-Integer</label><input type="text" name="input-format-integer"  data-jqfmv="format" data-jqfmv-format="integer" /><div style="clear:both">&nbsp;</div>
+            <label>input-Format-Phone</label><input type="text" name="input-format-phone"  data-jqfmv="format" data-jqfmv-format="phone" /><div style="clear:both">&nbsp;</div>
+            <label>input-Mandatory</label><input type="text" name="input-mandatory"  data-jqfmv="mandatory" /><div style="clear:both">&nbsp;</div>
+            <label>input-Mandatory-Email</label><input type="text" name="input-mandatory-email"  data-jqfmv="mandatory,email" /><div style="clear:both">&nbsp;</div>
+            <label>input-Static</label><input type="text" name="input-static"  data-jqfmv="static" data-jqfmv-static="test" /><div style="clear:both">&nbsp;</div>
             <input type="submit" name="input-submit" value="Submit" />
         </form>
         <script type="text/javascript">
