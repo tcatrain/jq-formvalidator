@@ -45,11 +45,11 @@ $('theFormItem').formValidator({
 These triggers are static for the time being, I may enhance more dynamic possibilities.
 
 ### Success and error
-The library allows to overright the default handlers for validation success and error.
+The library allows to override the default handlers for validation success and error.
 The default handler is very basic, and just change the background from default to green
 on success and from default to red on error.
 
-You can overright these handler just by settings customizable options when defining your
+You can override these handler just by settings customizable options when defining your
 form validation item :
 
 ```javascript
