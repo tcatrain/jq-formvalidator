@@ -82,6 +82,7 @@ A set of validator is already implemented as core handlers. Here is the list :
 | length     | Value has a valid length         | min,max                       |
 | mandatory  | Value is set                     | none                          | 
 | expr       | Value matches regular expression | regex                         |
+| alphabetic | Value is a valid alphabetic      | none                          |
 | email      | Value is a valid email           | none                          |
 | number     | Value is a valid number          | none                          |
 | integer    | Value is a valid integer         | none                          |

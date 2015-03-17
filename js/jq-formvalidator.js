@@ -195,7 +195,11 @@
      * Method used by default when a validation succeeds
      **/
     $.fn._onValidationSuccess = function(input) {
-        input.css('backgroundColor','green');
+        var resultSpan = input.next('span.success, span.error');
+        var text = '<span class="success">&#10004;</span>'
+        
+        if (resultSpan.length > 0) resultSpan.replaceWith(text);
+        else input.after(text);
     };
 
     /**
@@ -206,8 +210,13 @@
      * Method used by default when a validation fails
      **/
     $.fn._onValidationError = function(input, errors) {
-        input.css('backgroundColor','red');
-        console.debug($(input).attr('name') + " : " + errors);
+        var resultSpan = input.next('span.success, span.error');
+        var text = '<span class="error" title="'
+            .concat($(input).attr('name') + " : " + errors)
+            .concat('">&#10008;</span>');
+        
+        if (resultSpan.length > 0) resultSpan.replaceWith(text);
+        else input.after(text);
     };
 
     /**
@@ -336,6 +345,25 @@
 
                     if (value.match(against) === null) err.push('JQFMV_EXPR_MATCH_ERROR');
 
+                    return (err);
+                },
+                
+                /**
+                 * @scope private
+                 * @methd _alphabeticValidator
+                 * @this $.jqfmv.validators._core
+                 * @param value ::the input value
+                 * @return array ::the list of errors for the validator
+                 * Method used to validate the format of a field against alphabetic pattern
+                 * 
+                 *      JQFMV_ALPHABETIC_MATCH_ERROR indicates an error on matching the alphabetic format
+                 **/
+                _alphabeticValidator : function(value) {
+                    var err = [];
+                    if (value === null || value.length === 0) return err;
+                    
+                    if (value.match(/^[A-Za-z]+$/) === null) err.push('JQFMV_ALPHABETIC_MATCH_ERROR');
+                        
                     return (err);
                 },
                 
@@ -491,6 +519,7 @@
     $.jqfmv.validators.add({'name' : 'length', 'handler' : $.jqfmv.validators._core._lengthValidator});
     $.jqfmv.validators.add({'name' : 'mandatory', 'handler' : $.jqfmv.validators._core._mandatoryValidator});
     $.jqfmv.validators.add({'name' : 'expr', 'handler' : $.jqfmv.validators._core._exprValidator});
+    $.jqfmv.validators.add({'name' : 'alphabetic', 'handler' : $.jqfmv.validators._core._alphabeticValidator});
     $.jqfmv.validators.add({'name' : 'email', 'handler' : $.jqfmv.validators._core._emailValidator});
     $.jqfmv.validators.add({'name' : 'number', 'handler' : $.jqfmv.validators._core._numberValidator});
     $.jqfmv.validators.add({'name' : 'integer', 'handler' : $.jqfmv.validators._core._integerValidator});
