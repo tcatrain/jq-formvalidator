@@ -79,7 +79,7 @@ A set of validator is already implemented as core handlers. Here is the list :
 
 | Name       | Validation                       | Against attribute syntax      |
 | ---------- | -------------------------------- | ----------------------------- |
-| length     | Value has a valid length         | min,max                       |
+| length     | Value has a valid length         | '[' or ']'min,max'[' or ']'   |
 | mandatory  | Value is set                     | none                          | 
 | expr       | Value matches regular expression | regex                         |
 | alphabetic | Value is a valid alphabetic      | none                          |
@@ -100,13 +100,13 @@ against attribute as required.
 
 ```html
 <!-- This input will be validated against length validator, which should be at list 1. -->
-<input type="text" name="inputLength" data-jqfmv="length" data-jqfmv-length="1," />
+<input type="text" name="inputLength" data-jqfmv="length" data-jqfmv-length="]1,]" />
 <!-- This input will be validated against number validator.-->
 <input type="text" name="inputNumber" data-jqfmv="number" />
 <!-- This input will be validated against mandatory and integer validator.-->
 <input type="text" name="inputIntegerMandatory" data-jqfmv="integer,mandatory" />
 <!-- This input will be validated against length and format validator.-->
-<input type="text" name="inputLengthFormat" data-jqfmv="length,format" data-jqfmv-length="10,15" data-jqfmv-format="number" />
+<input type="text" name="inputLengthFormat" data-jqfmv="length,format" data-jqfmv-length="[10,15]" data-jqfmv-format="number" />
 ```
 
 ### Extending the core

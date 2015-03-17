@@ -306,9 +306,9 @@
                  * @return array ::the list of errors for the validator
                  * Method used to validate the length of a field, regarding the min length
                  * and/or max length.
-                 *      ,n => to validate max length only
-                 *      n, => to validate min length only
-                 *      n,n => to validate min and max length
+                 *      [,n] => to validate max length only
+                 *      [n,] => to validate min length only
+                 *      [n,n] => to validate min and max length
                  * 
                  *      JQFMV_LENGTH_MIN_ERROR indicates an error on min length
                  *      JQFMV_LENGTH_MAX_ERROR indicates an error on max length
@@ -318,8 +318,14 @@
                     if (value === null || value.length === 0) return err;
 
                     var bounds = against.split(',');
-                    var min = bounds[0].length ? window.parseInt(bounds[0]) : null;
-                    var max = bounds[1].length ? window.parseInt(bounds[1]) : null;
+                    
+                    var maxLength = bounds[1].length;
+                    
+                    var minModifier = bounds[0].charAt(0) == ']' ? 1 : 0;
+                    var maxModifier = bounds[1].charAt(maxLength - 1) == '[' ? -1 : 0;
+                    
+                    var min = bounds[0].length ? window.parseInt(bounds[0].slice(1)) + minModifier : null;
+                    var max = bounds[1].length ? window.parseInt(bounds[1].slice(0, maxLength - 1)) + maxModifier : null;
                     if (min !== null && value.length < min) err.push('JQFMV_LENGTH_MIN_ERROR');
                     if (max !== null && value.length > max) err.push('JQFMV_LENGTH_MAX_ERROR');
 
