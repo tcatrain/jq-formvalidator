@@ -24,6 +24,12 @@
  *          replaceWithTrimedValues
  *          trimValues
  *      Adding settings propagation
+ * @updated 2015-03-16
+ *      Handling callback after validation success
+ *      Handling callback after validation error
+ * @updated 2015-03-17
+ *      Making markup lighter
+ *      Changing length notation with bound ] and [
  ******************************************************************************/
 
 (function( $ ) {
