@@ -115,7 +115,6 @@
     $.fn._validateInput = function(settings) {
         var err = [];
         var inputFilter = $(this).filter('input[jqfmv-validators]');
-        console.info(this);
         inputFilter.each(function() {
             var inpt = $(this);
             var inptValidators = inpt.attr('jqfmv-validators').split(',');
@@ -203,7 +202,11 @@
      * Method used by default when a validation succeeds
      **/
     $.fn._onValidationSuccess = function(input) {
-        input.css('borderColor','green');
+        var resultSpan = input.next('span.success, span.error');
+        var text = '<span class="success">&#10004;</span>'
+        
+        if (resultSpan.length > 0) resultSpan.replaceWith(text);
+        else input.after(text);
     };
 
     /**
@@ -214,8 +217,13 @@
      * Method used by default when a validation fails
      **/
     $.fn._onValidationError = function(input, errors) {
-        input.css('borderColor','red');
-        console.debug($(input).attr('name') + " : " + errors);
+        var resultSpan = input.next('span.success, span.error');
+        var text = '<span class="error" title="'
+            .concat($(input).attr('name') + " : " + errors)
+            .concat('">&#10008;</span>');
+        
+        if (resultSpan.length > 0) resultSpan.replaceWith(text);
+        else input.after(text);
     };
 
     /**
@@ -248,15 +256,42 @@
              * @this $.jqfmv.validators
              * @param name ::name of the validator
              * @param input ::the target input
-             
+             * @param settings ::list of customizable settings
              * @return aray ::the list of all errors for the validator
              * Method used to execute the validator defined by name against the given input
              **/
             validate : function(name, input, settings) {
-                var inptValue = settings.trimValues === true ? input.val().trim() : input.val();
-                if (settings.trimValues === true && settings.replaceWithTrimedValues === true)
-                    input.val(inptValue);
-                return ($.jqfmv.validators._validators[name](inptValue, this._against(name, input), settings));
+                return ($.jqfmv.validators._validators[name](this._value(input, settings), this._against(name, input), settings));
+            },
+
+            /**
+             * @scope private
+             * @methd _against
+             * @this $.jqfmv.validators
+             * @param input ::the target input
+             * @param settings ::list of customizable settings
+             * @return string ::value attribute depending on input type
+             * Method used to retrieve the appropriate value according to input type
+             **/
+            _value : function(input, settings) {
+                var value;
+                
+                switch (input.attr('type')) {
+                    case 'radio':
+                    case 'checkbox':
+                        var filtered = input.filter(':checked');
+                        value = filtered.length > 0 ? filtered.val() : null;
+                        break;
+                    case 'text':
+                    case 'password':
+                        value = settings.trimValues === true ? input.val().trim() : input.val();
+                        if (settings.trimValues === true && settings.replaceWithTrimedValues === true)
+                            input.val(value);
+                        break;
+                    default:
+                        throw "Unsupported field type " + input.type;
+                }
+                return (value);
             },
 
             /**
@@ -344,6 +379,25 @@
 
                     if (value.match(against) === null) err.push('JQFMV_EXPR_MATCH_ERROR');
 
+                    return (err);
+                },
+                
+                /**
+                 * @scope private
+                 * @methd _alphabeticValidator
+                 * @this $.jqfmv.validators._core
+                 * @param value ::the input value
+                 * @return array ::the list of errors for the validator
+                 * Method used to validate the format of a field against alphabetic pattern
+                 * 
+                 *      JQFMV_ALPHABETIC_MATCH_ERROR indicates an error on matching the alphabetic format
+                 **/
+                _alphabeticValidator : function(value) {
+                    var err = [];
+                    if (value === null || value.length === 0) return err;
+                    
+                    if (value.match(/^[A-Za-z]+$/) === null) err.push('JQFMV_ALPHABETIC_MATCH_ERROR');
+                        
                     return (err);
                 },
                 
@@ -499,6 +553,7 @@
     $.jqfmv.validators.add({'name' : 'length', 'handler' : $.jqfmv.validators._core._lengthValidator});
     $.jqfmv.validators.add({'name' : 'mandatory', 'handler' : $.jqfmv.validators._core._mandatoryValidator});
     $.jqfmv.validators.add({'name' : 'expr', 'handler' : $.jqfmv.validators._core._exprValidator});
+    $.jqfmv.validators.add({'name' : 'alphabetic', 'handler' : $.jqfmv.validators._core._alphabeticValidator});
     $.jqfmv.validators.add({'name' : 'email', 'handler' : $.jqfmv.validators._core._emailValidator});
     $.jqfmv.validators.add({'name' : 'number', 'handler' : $.jqfmv.validators._core._numberValidator});
     $.jqfmv.validators.add({'name' : 'integer', 'handler' : $.jqfmv.validators._core._integerValidator});
